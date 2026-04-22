@@ -1,8 +1,8 @@
 // 4.1 Exact match by shared identifiers
+
 MATCH
-  (r1:Researcher)-[:HAS_ORCID|HAS_EMAIL]->
-  (shared)<-[:HAS_ORCID|HAS_EMAIL]-
-  (r2:Researcher)
+  (r1:Researcher)-[:HAS_ORCID|HAS_EMAIL]->(shared),
+  (shared)<-[:HAS_ORCID|HAS_EMAIL]-(r2:Researcher)
 WHERE r1.researcherId < r2.researcherId
 RETURN
   r1.researcherId AS researcher_1,
